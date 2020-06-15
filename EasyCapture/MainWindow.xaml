@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyCapture"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-    <Button Content="Button" Click="OpenOverlay"/>
-  </Grid>
+        WindowStyle="None"
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        Background="#01000000"
+        KeyDown="Window_KeyDown"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseMove="Window_MouseMove"
+        MouseLeftButtonUp="Window_MouseLeftButtonUp"
+        Topmost="True"
+        Title="EasyCapture">
+  <Canvas>
+    <Rectangle
+      Canvas.Top="{Binding SelectionBox.Top}"
+      Canvas.Left="{Binding SelectionBox.Left}"
+      Width ="{Binding SelectionBox.Width}"
+      Height ="{Binding SelectionBox.Height}"
+      Fill="#33000000"
+      Visibility="{Binding SelectionBox.Visibility}"
+    />
+  </Canvas>
 </Window>
