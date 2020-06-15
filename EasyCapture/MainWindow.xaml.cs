@@ -133,20 +133,32 @@ namespace EasyCapture
 
     }
 
+    private void saveAndExit()
+    {
+      try
+      {
+        using (var image = new Bitmap(selectionBox.Width, selectionBox.Height))
+        {
+          var graphics = Graphics.FromImage(image);
+          graphics.CopyFromScreen(
+            new System.Drawing.Point(0, 0),
+            new System.Drawing.Point(0, 0),
+            new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
+          );
+          image.Save("screenshot.png");
+        }
+        Close();
+      }
+      catch (Exception e)
+      {
+        Debug.Crash(Properties.Resources.FaildToSaveImage, e);
+      }
+    }
+
     private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
       selectionBox.Visibility = Visibility.Hidden;
-
-      using (var image = new Bitmap(selectionBox.Width, selectionBox.Height))
-      {
-        var graphics = Graphics.FromImage(image);
-        graphics.CopyFromScreen(
-          new System.Drawing.Point(0, 0),
-          new System.Drawing.Point(0, 0),
-          new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
-        );
-        image.Save("screenshot.png");
-      }
+      saveAndExit();
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)
