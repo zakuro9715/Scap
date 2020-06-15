@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCapture", "EasyCapture\EasyCapture.csproj", "{02D6FB75-F73B-4CCE-8A96-C6397801CCF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02D6FB75-F73B-4CCE-8A96-C6397801CCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D6FB75-F73B-4CCE-8A96-C6397801CCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D6FB75-F73B-4CCE-8A96-C6397801CCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D6FB75-F73B-4CCE-8A96-C6397801CCF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5507DBEA-E8E7-4C27-85B0-A8F7F2E02444}
+	EndGlobalSection
+EndGlobal
