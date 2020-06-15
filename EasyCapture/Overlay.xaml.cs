@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,25 +8,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EasyCapture
 {
   /// <summary>
-  /// Interaction logic for MainWindow.xaml
+  /// Overlay.xaml の相互作用ロジック
   /// </summary>
-  public partial class MainWindow : Window
+  public partial class Overlay : Window
   {
-    public MainWindow()
+    public Overlay()
     {
       InitializeComponent();
     }
 
-    private void OpenOverlay(object sender, RoutedEventArgs e)
+    private void Window_KeyDown(object sender, KeyEventArgs e)
     {
-      var overlay = new Overlay();
-      overlay.Show();
+      if(e.Key == Key.Escape)
+      {
+        this.Close();
+      }
     }
   }
 }
