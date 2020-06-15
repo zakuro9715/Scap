@@ -61,6 +61,19 @@ namespace EasyCapture.Properties {
         }
         
         /// <summary>
+        ///   {0}
+        ///
+        ///-----------
+        ///
+        ///{1} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string CrashMessageFormat {
+            get {
+                return ResourceManager.GetString("CrashMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to save image. Please report to https://github.com/team-pianoforte/EasyCapture/issues に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FaildToSaveImage {

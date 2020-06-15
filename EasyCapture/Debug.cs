@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace EasyCapture
   {
     public static void Crash(string message, Exception exp)
     {
-      MessageBox.Show(message + exp.StackTrace);
+      MessageBox.Show(String.Format(Properties.Resources.CrashMessageFormat, message, exp.StackTrace), "Error");
       Application.Current.Shutdown();
     }
   }
