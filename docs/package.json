@@ -10,7 +10,7 @@
     "build": "vuepress build --dest dist"
   },
   "devDependencies": {
-    "@pianoforte/vuepress-theme-standard": "github:team-pianoforte/vuepress-theme",
+    "@pianoforte/vuepress-theme-standard": "^0.3.0",
     "vuepress": "^1.5.2"
   },
   "dependencies": {}
