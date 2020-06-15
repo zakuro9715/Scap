@@ -14,3 +14,9 @@ Simple capture screen tool
 - Run EasyCapture.exe
 - Drag the area you want to capture.
 - The captured image will be shown on explorer.
+
+## Note
+
+EasyCapture.exe is tested only windows.
+
+It use dotnet core. It might work on macOS and Linux but they are not supported.
