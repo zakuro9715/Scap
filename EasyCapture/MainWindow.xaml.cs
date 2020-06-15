@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -146,7 +147,17 @@ namespace EasyCapture
             new System.Drawing.Point(0, 0),
             new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
           );
-          image.Save("screenshot.png");
+
+          var dir = System.IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+            "EasyCapture"
+          );
+          if (!Directory.Exists(dir))
+          {
+            Directory.CreateDirectory(dir);
+          }
+          image.Save(System.IO.Path.Combine(dir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
+          System.Diagnostics.Process.Start("EXPLORER.EXE", dir);
         }
         Close();
       }
