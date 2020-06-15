@@ -6,7 +6,7 @@ Simple capture screen tool
 
 ## Install
 
-- Download EasyCapture.zip from [release page](https://github.com/team-pianoforte/EasyCapture/releases) and unzip it
+- Download [EasyCapture.zip](https://github.com/team-pianoforte/EasyCapture/releases/download/0.1.0/EasyCapture.zip) and unzip it
 - [Optional] Pin EasyCapture.exe to taskbar
 
 ## Usage
