@@ -10,8 +10,19 @@
         AllowsTransparency="True"
         Background="#8f000000"
         KeyDown="Window_KeyDown"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseMove="Window_MouseMove"
+        MouseLeftButtonUp="Window_MouseLeftButtonUp"
         Title="Overlay" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+  <Canvas>
+    <Rectangle
+      Canvas.Top="{Binding SelectionBox.Top}"
+      Canvas.Left="{Binding SelectionBox.Left}"
+      Width ="{Binding SelectionBox.Width}"
+      Height ="{Binding SelectionBox.Height}"
+      Fill="#33000000"
+      Visibility="{Binding SelectionBox.Visibility}"
+    />
+  </Canvas>
+   
 </Window>
