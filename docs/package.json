@@ -1,0 +1,19 @@
+{
+  "name": "pianoforte.team",
+  "version": "1.0.0",
+  "description": "Pianoforte official website",
+  "author": "z@kuro <zakuro@pianoforte.dev>",
+  "private": true,
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build --dest dist"
+  },
+  "devDependencies": {
+    "@pianoforte/vuepress-theme-standard": "github:team-pianoforte/vuepress-theme",
+    "vuepress": "^1.5.2"
+  },
+  "dependencies": {}
+}
