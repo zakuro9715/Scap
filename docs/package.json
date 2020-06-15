@@ -1,7 +1,5 @@
 {
-  "name": "pianoforte.team",
-  "version": "1.0.0",
-  "description": "Pianoforte official website",
+  "name": "@pianoforte/easy-capture-docs",
   "author": "z@kuro <zakuro@pianoforte.dev>",
   "private": true,
   "engines": {
