@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,8 +32,8 @@ namespace EasyCapture
           PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
       }
-      private double top;
-      public double Top {
+      private int top;
+      public int Top {
         get { return top; }
         set {
           if (top != value) {
@@ -41,8 +42,8 @@ namespace EasyCapture
           }
         }
       }
-      private double left;
-      public double Left
+      private int left;
+      public int Left
       {
         get { return left; }
         set
@@ -54,8 +55,8 @@ namespace EasyCapture
           }
         }
       }
-      private double width;
-      public double Width
+      private int width;
+      public int Width
       {
         get { return width; }
         set
@@ -67,8 +68,8 @@ namespace EasyCapture
           }
         }
       }
-      private double height;
-      public double Height
+      private int height;
+      public int Height
       {
         get { return height; }
         set
@@ -127,21 +128,32 @@ namespace EasyCapture
     {
       selectionBox.Visibility = Visibility.Visible;
       var pos = e.GetPosition(this);
-      selectionBox.Left = pos.X;
-      selectionBox.Top = pos.Y;
+      selectionBox.Left =(int)pos.X;
+      selectionBox.Top = (int)pos.Y;
 
     }
 
     private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
       selectionBox.Visibility = Visibility.Hidden;
+
+      using (var image = new Bitmap(selectionBox.Width, selectionBox.Height))
+      {
+        var graphics = Graphics.FromImage(image);
+        graphics.CopyFromScreen(
+          new System.Drawing.Point(0, 0),
+          new System.Drawing.Point(0, 0),
+          new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
+        );
+        image.Save("screenshot.png");
+      }
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)
     {
       var pos =e.GetPosition(this);
-      selectionBox.Width = pos.X - selectionBox.Left;
-      selectionBox.Height = pos.Y - selectionBox.Top;
+      selectionBox.Width = (int)pos.X - selectionBox.Left;
+      selectionBox.Height = (int)pos.Y - selectionBox.Top;
     }
   }
 }
