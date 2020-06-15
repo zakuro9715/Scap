@@ -17,6 +17,5 @@ Simple capture screen tool
 
 ## Note
 
-EasyCapture.exe is tested only windows.
+EasyCapture.exe works only windows.
 
-It use dotnet core. It might work on macOS and Linux but they are not supported.
