@@ -11,7 +11,6 @@ namespace EasyCapture.Common
 {
   public class Settings : INotifyPropertyChanged
   {
-
     public Settings() { }
     public Settings(string screenshotDir, bool openExplorer)
     {
@@ -83,6 +82,36 @@ namespace EasyCapture.Common
         }
       }
     }
+
+    private string imgurRefreshToken;
+    public string ImgurRefreshToken
+    {
+      get { return imgurRefreshToken; }
+      set
+      {
+        if (imgurRefreshToken != value)
+        {
+          imgurRefreshToken = value;
+          NotifyPropertyChanged();
+        }
+      }
+    }
+
+
+    private int imgurExpiresIn;
+    public int ImgurExpiresIn
+    {
+      get { return imgurExpiresIn; }
+      set
+      {
+        if (imgurExpiresIn != value)
+        {
+          imgurExpiresIn = value;
+          NotifyPropertyChanged();
+        }
+      }
+    }
+
 
     public bool ImgurLoggedIn
     {

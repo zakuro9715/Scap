@@ -61,11 +61,11 @@ namespace EasyCapture.Settings.Properties {
         }
         
         /// <summary>
-        ///   https://api.imgur.com/oauth2/authorize?client_id=4405dc9e52d7b14&amp;response_type=pin に類似しているローカライズされた文字列を検索します。
+        ///   https://api.imgur.com/oauth2/authorize?client_id={0}&amp;response_type=pin に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string ImgurAuthorizeUrl {
+        internal static string ImgurAuthorizeUrlFormat {
             get {
-                return ResourceManager.GetString("ImgurAuthorizeUrl", resourceCulture);
+                return ResourceManager.GetString("ImgurAuthorizeUrlFormat", resourceCulture);
             }
         }
         
@@ -75,6 +75,24 @@ namespace EasyCapture.Settings.Properties {
         internal static string ImgurClientId {
             get {
                 return ResourceManager.GetString("ImgurClientId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   563deb62a0f3c35f0359aee2bb4777ba267d1d53 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ImgurClientSecret {
+            get {
+                return ResourceManager.GetString("ImgurClientSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://api.imgur.com/oauth2/token に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ImgurOauthTokenUrl {
+            get {
+                return ResourceManager.GetString("ImgurOauthTokenUrl", resourceCulture);
             }
         }
     }

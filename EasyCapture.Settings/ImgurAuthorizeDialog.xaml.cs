@@ -30,18 +30,17 @@ namespace EasyCapture.Settings
         this.Username = username;
       }
     }
-    public AuthResult Result { get; set; }
-
-    public ImgurAuthorizeDialog()
+    private EasyCapture.Common.Settings settings;
+      public ImgurAuthorizeDialog(EasyCapture.Common.Settings settings)
     {
       InitializeComponent();
-      var url = Properties.Resources.ImgurAuthorizeUrl.Replace("&", "^&");
-      Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
+      this.settings = settings;
+      Imgur.OpenAuthWindow();
     }
 
-    private void SaveButton_Click(object sender, RoutedEventArgs e)
+    private void LoginButton_Click(object sender, RoutedEventArgs e)
     {
-      Result = new AuthResult("dummytoken", "dummmyuser");
+      Imgur.Authorize(PinCodeInput.Text, settings);
       DialogResult = true;
       Close();
     }

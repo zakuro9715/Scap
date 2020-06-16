@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyCapture.Settings"
         mc:Ignorable="d"
-        Title="ImgurAuthorizeDialog" Height="100" Width="200">
+        Height="150" Width="200">
   <Grid Margin="8, 8, 8, 8">
     <StackPanel Orientation="Vertical">
       <Label Content="PIN" HorizontalAlignment="Center"/>
       <TextBox Name="PinCodeInput"/>
       <StackPanel Orientation="Horizontal" Margin="0,16,0,0" HorizontalAlignment="Center">
-        <Button Content="Save" Margin="0,0,8,0" Padding="8, 2, 8, 2" Click="SaveButton_Click"/>
+        <Button Content="Login" Margin="0,0,8,0" Padding="8, 2, 8, 2" Click="LoginButton_Click"/>
         <Button Content="Cancel" Padding="8, 2, 8, 2" Click="CancelButton_Click"/>
       </StackPanel>
 
