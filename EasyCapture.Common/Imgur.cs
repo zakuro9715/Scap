@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Dynamic;
 
-namespace EasyCapture.Settings
+namespace EasyCapture.Common
 {
   public static class Imgur
   {
@@ -20,7 +20,7 @@ namespace EasyCapture.Settings
       Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
     }
 
-    public static string Authorize(string pin, EasyCapture.Common.Settings settings)
+    public static void Authorize(string pin, EasyCapture.Common.Settings settings)
     {
       var content = new FormUrlEncodedContent(new Dictionary<string, string>() {
         { "client_id", Properties.Resources.ImgurClientId },
@@ -41,7 +41,6 @@ namespace EasyCapture.Settings
 
           Console.WriteLine();
         });
-      return "";
     }
   }
 }
