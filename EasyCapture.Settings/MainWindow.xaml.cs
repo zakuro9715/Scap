@@ -23,55 +23,22 @@ namespace EasyCapture.Settings
   /// </summary>
   public partial class MainWindow : Window
   {
-    private class Settings : INotifyPropertyChanged
-    {
-      public event PropertyChangedEventHandler PropertyChanged;
-      private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-      {
-        if (PropertyChanged != null)
-        {
-          PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-      }
-      private string screenshotDir;
-      public string ScreenshotDir
-      {
-        get { return  screenshotDir; }
-        set
-        {
-          if (screenshotDir != value)
-          {
-            screenshotDir = value;
-            NotifyPropertyChanged();
-          }
-        }
-      }
-
-      private bool openExplorer;
-      public bool OpenExplorer
-      {
-        get { return openExplorer; }
-        set
-        {
-          if (openExplorer != value)
-          {
-            openExplorer = value;
-            NotifyPropertyChanged();
-          }
-        }
-      }
-    }
-
-    private Settings settings = new Settings();
+    private EasyCapture.Common.Settings settings = null;
     public MainWindow()
     {
       InitializeComponent();
+      settings = EasyCapture.Common.Settings.Load();
       DataContext = new { Settings = settings };
     }
-
-    private void Button_Click(object sender, RoutedEventArgs e)
+    private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-      settings.ScreenshotDir = "dir"; 
+      settings.Save();
+      Close();
+    }
+
+    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    {
+      Close();
     }
   }
 }
