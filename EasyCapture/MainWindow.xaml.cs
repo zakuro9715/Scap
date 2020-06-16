@@ -134,7 +134,7 @@ namespace EasyCapture
 
     }
 
-    private void saveAndExit()
+    private void SaveAndExit()
     {
       try
       {
@@ -168,7 +168,7 @@ namespace EasyCapture
     private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
       selectionBox.Visibility = Visibility.Hidden;
-      saveAndExit();
+      SaveAndExit();
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)
