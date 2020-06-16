@@ -54,6 +54,19 @@ namespace EasyCapture.Common
       }
     }
 
+    private bool uploadToImgur;
+    public bool UploadToImgur
+    {
+      get { return uploadToImgur; }
+      set
+      {
+        if (uploadToImgur != value)
+        {
+          uploadToImgur = value;
+          NotifyPropertyChanged();
+        }
+      }
+    }
     private string imgurToken;
     public string ImgurToken
     {
