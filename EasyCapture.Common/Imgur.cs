@@ -20,7 +20,7 @@ namespace EasyCapture.Common
       Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
     }
 
-    public static void Authorize(string pin, EasyCapture.Common.Settings settings)
+    public static void Authorize(string pin, Settings settings)
     {
       var content = new FormUrlEncodedContent(new Dictionary<string, string>() {
         { "client_id", Properties.Resources.ImgurClientId },
@@ -38,8 +38,6 @@ namespace EasyCapture.Common
           settings.ImgurUsername = obj.account_username.GetString();
           settings.ImgurRefreshToken = obj.refresh_token.GetString();
           settings.ImgurExpiresIn = obj.expires_in.GetInt32();
-
-          Console.WriteLine();
         });
     }
   }
