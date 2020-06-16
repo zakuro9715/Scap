@@ -177,5 +177,10 @@ namespace EasyCapture
       selectionBox.Width = (int)pos.X - selectionBox.Left;
       selectionBox.Height = (int)pos.Y - selectionBox.Top;
     }
+
+    private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      Close();
+    }
   }
 }
