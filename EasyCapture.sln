@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1373186C-EF3A-4D59-BF0D-A43F1703EA55}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		images\icon.ico = images\icon.ico
+		images\icon.png = images\icon.png
+		images\icon.svg = images\icon.svg
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCapture.Settings", "EasyCapture.Settings\EasyCapture.Settings.csproj", "{22EE9874-E872-45D5-A797-A3E7C3CE6B18}"
