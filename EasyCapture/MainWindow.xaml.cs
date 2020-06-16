@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using System.Drawing.Imaging;
+using EasyCapture.Common;
+using System.Threading.Tasks;
 
 namespace EasyCapture
 {
@@ -134,11 +137,17 @@ namespace EasyCapture
 
     }
 
-    private void SaveAndExit()
+    private void SaveImage(Bitmap image, Settings settings)
+    {
+      Directory.CreateDirectory(settings.ScreenshotDir);
+      image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
+    }
+
+    private async Task TakeAndProcessScreenshot()
     {
       try
       {
-        var settings = EasyCapture.Common.Settings.Load();
+        var settings = Settings.Load();
 
         using (var image = new Bitmap(selectionBox.Width, selectionBox.Height))
         {
@@ -149,8 +158,17 @@ namespace EasyCapture
             new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
           );
 
-          Directory.CreateDirectory(settings.ScreenshotDir);
-          image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
+          SaveImage(image, settings);
+
+          if (settings.UploadToImgur)
+          {
+            using (var ms = new MemoryStream())
+            {
+              image.Save(ms, ImageFormat.Png);
+              var link = await Imgur.Upload(Convert.ToBase64String(ms.ToArray()), settings);
+              Process.Start(new ProcessStartInfo("cmd", $"/c start { link.Replace("&", "^&") }"));
+            }
+          }
         }
 
         if (settings.OpenExplorer)
@@ -165,10 +183,10 @@ namespace EasyCapture
       }
     }
 
-    private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    private async void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
       selectionBox.Visibility = Visibility.Hidden;
-      SaveAndExit();
+      await TakeAndProcessScreenshot();
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)

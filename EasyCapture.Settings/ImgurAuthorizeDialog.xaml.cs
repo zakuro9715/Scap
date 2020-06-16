@@ -21,17 +21,6 @@ namespace EasyCapture.Settings
   /// </summary>
   public partial class ImgurAuthorizeDialog : Window
   {
-    public struct AuthResult
-    {
-      public readonly string Token;
-      public readonly string Username;
-
-      public AuthResult(string token, string username)
-      {
-        this.Token = token;
-        this.Username = username;
-      }
-    }
     private EasyCapture.Common.Settings settings;
       public ImgurAuthorizeDialog(EasyCapture.Common.Settings settings)
     {
@@ -40,9 +29,9 @@ namespace EasyCapture.Settings
       Imgur.OpenAuthWindow();
     }
 
-    private void LoginButton_Click(object sender, RoutedEventArgs e)
+    private async void LoginButton_Click(object sender, RoutedEventArgs e)
     {
-      Imgur.Authorize(PinCodeInput.Text, settings);
+      await Imgur.Authorize(PinCodeInput.Text, settings);
       DialogResult = true;
       Close();
     }

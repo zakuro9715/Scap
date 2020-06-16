@@ -129,4 +129,7 @@
   <data name="ImgurOauthTokenUrl" xml:space="preserve">
     <value>https://api.imgur.com/oauth2/token</value>
   </data>
+  <data name="ImgurUploadUrl" xml:space="preserve">
+    <value>https://api.imgur.com/3/upload</value>
+  </data>
 </root>

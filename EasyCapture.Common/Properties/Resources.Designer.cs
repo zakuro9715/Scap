@@ -95,5 +95,14 @@ namespace EasyCapture.Common.Properties {
                 return ResourceManager.GetString("ImgurOauthTokenUrl", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   https://api.imgur.com/3/upload に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ImgurUploadUrl {
+            get {
+                return ResourceManager.GetString("ImgurUploadUrl", resourceCulture);
+            }
+        }
     }
 }
