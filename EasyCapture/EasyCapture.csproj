@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyCapture.Common\EasyCapture.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Assets\capture.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

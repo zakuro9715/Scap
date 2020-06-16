@@ -105,7 +105,6 @@ namespace EasyCapture
     }
 
     private readonly SelectionBox selectionBox = new SelectionBox();
-
     public MainWindow()
     {
       InitializeComponent();
@@ -139,6 +138,8 @@ namespace EasyCapture
     {
       try
       {
+        var settings = EasyCapture.Common.Settings.Load();
+
         using (var image = new Bitmap(selectionBox.Width, selectionBox.Height))
         {
           var graphics = Graphics.FromImage(image);
@@ -148,16 +149,13 @@ namespace EasyCapture
             new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
           );
 
-          var dir = System.IO.Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-            "EasyCapture"
-          );
-          if (!Directory.Exists(dir))
-          {
-            Directory.CreateDirectory(dir);
-          }
-          image.Save(System.IO.Path.Combine(dir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
-          System.Diagnostics.Process.Start("EXPLORER.EXE", dir);
+          Directory.CreateDirectory(settings.ScreenshotDir);
+          image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
+        }
+
+        if (settings.OpenExplorer)
+        {
+          Process.Start("EXPLORER.EXE", settings.ScreenshotDir);
         }
         Close();
       }
