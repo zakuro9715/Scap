@@ -144,7 +144,7 @@ namespace EasyCapture
         {
           var graphics = Graphics.FromImage(image);
           graphics.CopyFromScreen(
-            new System.Drawing.Point(0, 0),
+            new System.Drawing.Point(selectionBox.Left, selectionBox.Top),
             new System.Drawing.Point(0, 0),
             new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
           );
@@ -173,7 +173,7 @@ namespace EasyCapture
 
     private void Window_MouseMove(object sender, MouseEventArgs e)
     {
-      var pos =e.GetPosition(this);
+      var pos = e.GetPosition(this);
       selectionBox.Width = (int)pos.X - selectionBox.Left;
       selectionBox.Height = (int)pos.Y - selectionBox.Top;
     }
