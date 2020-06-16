@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EasyCapture.Settings"
         mc:Ignorable="d"
         FontFamily="メイリオ"
-        Title="MainWindow" Height="240" Width="600">
+        Title="MainWindow" Height="300" Width="600">
   <Grid Margin="8, 8, 0, 0">
     <TextBlock Text="EasyCapture Settings" FontSize="20" TextDecorations="Underline" />
     <Grid Margin="16,64,0,0">
@@ -23,10 +23,11 @@
         </StackPanel>
         <StackPanel Margin="0,16,0,0" Orientation="Vertical">
           <CheckBox Content="Upload to Imgur" IsChecked="{Binding Settings.OpenExplorer, Mode=TwoWay}"/>
-          <StackPanel Orientation="Horizontal">
-            <Button Content="Login" Click="ImgurLogin_Click" />
-            <Button Content="Logout" Click="ImgurLogout_Click" Margin="8, 0, 8, 0" />
-            <Label Content="{Binding Settings.ImgurUsername}" />
+          <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0" Height="20">
+            <Button Content="Login" Click="ImgurLogin_Click" Padding="8, 0, 8, 0" />
+            <Button Content="Logout" Click="ImgurLogout_Click" Padding="8, 0, 8, 0" Margin="8, 0, 0, 0" />
+            <Label Content="Account:" Margin="8, -4, -8, 0"/>
+            <Label Content="{Binding Settings.ImgurUsername}" VerticalAlignment="Top" Margin="0, -4, 0, 0"/>
           </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,16,0,0" HorizontalAlignment="Center">
