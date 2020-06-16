@@ -21,6 +21,14 @@
         <StackPanel Margin="0,16,0,0">
           <CheckBox Content="Open Explorer after capture" IsChecked="{Binding Settings.OpenExplorer, Mode=TwoWay}"/>
         </StackPanel>
+        <StackPanel Margin="0,16,0,0" Orientation="Vertical">
+          <CheckBox Content="Upload to Imgur" IsChecked="{Binding Settings.OpenExplorer, Mode=TwoWay}"/>
+          <StackPanel Orientation="Horizontal">
+            <Button Content="Login" Click="ImgurLogin_Click" />
+            <Button Content="Logout" Click="ImgurLogout_Click" Margin="8, 0, 8, 0" />
+            <Label Content="{Binding Settings.ImgurUsername}" />
+          </StackPanel>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,16,0,0" HorizontalAlignment="Center">
           <Button Content="Save" Margin="0,0,8,0" Padding="8, 2, 8, 2" Click="SaveButton_Click"/>
           <Button Content="Cancel" Padding="8, 2, 8, 2" Click="CancelButton_Click"/>

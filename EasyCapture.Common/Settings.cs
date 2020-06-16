@@ -55,6 +55,41 @@ namespace EasyCapture.Common
       }
     }
 
+    private string imgurToken;
+    public string ImgurToken
+    {
+      get { return imgurToken; }
+      set
+      {
+        if (imgurToken != value)
+        {
+          imgurToken = value;
+          NotifyPropertyChanged();
+        }
+      }
+    }
+
+
+    private string imgurUsername;
+    public string ImgurUsername
+    {
+      get { return imgurUsername; }
+      set
+      {
+        if (imgurUsername != value)
+        {
+          imgurUsername = value;
+          NotifyPropertyChanged();
+        }
+      }
+    }
+
+    public bool ImgurLoggedIn
+    {
+      get { return imgurToken.Length > 0; }
+    }
+
+
 
     private readonly static string settingsDir = Path.Combine(
       Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

@@ -40,5 +40,22 @@ namespace EasyCapture.Settings
     {
       Close();
     }
+
+    private void ImgurLogin_Click(object sender, RoutedEventArgs e)
+    {
+      var dialog = new ImgurAuthorizeDialog();
+      dialog.ShowDialog();
+      if (dialog.DialogResult == true)
+      {
+        settings.ImgurToken = dialog.Result.Token;
+        settings.ImgurUsername = dialog.Result.Username;
+      }
+    }
+    private void ImgurLogout_Click(object sender, RoutedEventArgs e)
+    {
+      settings.ImgurToken = "";
+      settings.ImgurUsername = "";
+    }
+
   }
 }
