@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.IO;
@@ -12,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using EasyCapture.Common;
@@ -26,78 +23,41 @@ namespace EasyCapture
   /// </summary>
   public partial class MainWindow : Window
   {
-    private class SelectionBox : INotifyPropertyChanged
+    private class SelectionBox : BindingData
     {
-      public event PropertyChangedEventHandler PropertyChanged;
-      private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-      {
-        if (PropertyChanged != null)
-        {
-          PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-      }
-      private int top;
-      public int Top {
-        get { return top; }
-        set {
-          if (top != value) {
-            top = value;
-            NotifyPropertyChanged();
-          }
-        }
-      }
       private int left;
       public int Left
       {
-        get { return left; }
-        set
-        {
-          if (left != value)
-          {
-            left = value;
-            NotifyPropertyChanged();
-          }
-        }
+        get => left;
+        set => SetField(ref left, value);
       }
+
+      private int top;
+      public int Top
+      {
+        get => top;
+        set => SetField(ref top, value);
+      }
+
       private int width;
       public int Width
       {
-        get { return width; }
-        set
-        {
-          if (width != value)
-          {
-            width = value;
-            NotifyPropertyChanged();
-          }
-        }
+        get => width;
+        set => SetField(ref width, value);
       }
+
       private int height;
       public int Height
       {
-        get { return height; }
-        set
-        {
-          if (height != value)
-          {
-            height = value;
-            NotifyPropertyChanged();
-          }
-        }
+        get => height;
+        set => SetField(ref height, value);
       }
 
       private Visibility visibility = Visibility.Hidden;
       public Visibility Visibility
       {
-        get { return visibility; }
-        set
-        {
-          if (visibility != value)
-          {
-            visibility = value;
-            NotifyPropertyChanged();
-          }
-        }
+        get => visibility;
+        set => SetField(ref visibility, value);
       }
     }
 
