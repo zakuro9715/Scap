@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace EasyCapture
 {
+  using Point = System.Drawing.Point;
 
   /// <summary>
   /// Overlay.xaml の相互作用ロジック
@@ -25,32 +26,34 @@ namespace EasyCapture
   {
     private class SelectionBox : BindingData
     {
+      public Point corner;
+
       private int left;
       public int Left
       {
         get => left;
-        set => SetField(ref left, value);
+        private set => SetField(ref left, value);
       }
 
       private int top;
       public int Top
       {
         get => top;
-        set => SetField(ref top, value);
+        private set => SetField(ref top, value);
       }
 
       private int width;
       public int Width
       {
         get => width;
-        set => SetField(ref width, value);
+        private set => SetField(ref width, value);
       }
 
       private int height;
       public int Height
       {
         get => height;
-        set => SetField(ref height, value);
+        private set => SetField(ref height, value);
       }
 
       private Visibility visibility = Visibility.Hidden;
@@ -59,6 +62,17 @@ namespace EasyCapture
         get => visibility;
         set => SetField(ref visibility, value);
       }
+
+      public void UpdateBox(Point otherCorner)
+      {
+        Left = Math.Min(corner.X, otherCorner.X);
+        Top = Math.Min(corner.Y, otherCorner.Y);
+        Width = Math.Abs(corner.X - otherCorner.X);
+        Height = Math.Abs(corner.Y - otherCorner.Y);
+      }
+
+      public void UpdateBox(System.Windows.Point otherCorner)
+        => UpdateBox(new Point((int)otherCorner.X, (int)otherCorner.Y));
     }
 
     private bool selecting {
@@ -90,11 +104,9 @@ namespace EasyCapture
 
     private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-      selectionBox.Visibility = Visibility.Visible;
       var pos = e.GetPosition(this);
-      selectionBox.Left =(int)pos.X;
-      selectionBox.Top = (int)pos.Y;
-
+      selectionBox.corner = new Point((int)pos.X, (int)pos.Y);
+      selectionBox.Visibility = Visibility.Visible;
     }
 
     private void SaveImage(Bitmap image, Settings settings)
@@ -152,8 +164,7 @@ namespace EasyCapture
     private void Window_MouseMove(object sender, MouseEventArgs e)
     {
       var pos = e.GetPosition(this);
-      selectionBox.Width = (int)pos.X - selectionBox.Left;
-      selectionBox.Height = (int)pos.Y - selectionBox.Top;
+      selectionBox.UpdateBox(pos);
     }
 
     private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
