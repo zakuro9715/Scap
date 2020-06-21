@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -52,6 +53,15 @@ namespace EasyCapture.Settings
       settings.ImgurRefreshToken = "";
       settings.ImgurUsername = "";
     }
-
+    private void SelectFolderButton_Click(object sender, RoutedEventArgs e)
+    {
+      var dialog = new FolderBrowserDialog();
+      dialog.SelectedPath = settings.ScreenshotDir;
+      var result = dialog.ShowDialog();
+      if (result == System.Windows.Forms.DialogResult.OK)
+      {
+        settings.ScreenshotDir = dialog.SelectedPath;
+      }
+    }
   }
 }
