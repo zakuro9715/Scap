@@ -8,22 +8,10 @@
         WindowStyle="None"
         WindowState="Maximized"
         AllowsTransparency="True"
-        Background="#01000000"
-        KeyDown="Window_KeyDown"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        MouseRightButtonDown="Window_MouseRightButtonDown"
-        MouseMove="Window_MouseMove"
-        MouseLeftButtonUp="Window_MouseLeftButtonUp"
-        Topmost="True"
-        Title="EasyCapture">
-  <Canvas>
-    <Rectangle
-      Canvas.Top="{Binding SelectionBox.Top}"
-      Canvas.Left="{Binding SelectionBox.Left}"
-      Width ="{Binding SelectionBox.Width}"
-      Height ="{Binding SelectionBox.Height}"
-      Fill="#33000000"
-      Visibility="{Binding SelectionBox.Visibility}"
-    />
-  </Canvas>
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="0" Width="0">
+    <Grid>
+        
+    </Grid>
 </Window>
