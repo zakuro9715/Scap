@@ -54,20 +54,6 @@ namespace EasyCapture.Common
       }
     }
 
-    private bool usePaint;
-    public bool UsePaint
-    {
-      get { return usePaint; }
-      set
-      {
-        if (usePaint != value)
-        {
-          usePaint = value;
-          NotifyPropertyChanged();
-        }
-      }
-    }
-
     private bool uploadToImgur;
     public bool UploadToImgur
     {
