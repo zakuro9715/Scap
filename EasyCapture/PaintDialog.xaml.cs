@@ -24,6 +24,14 @@ namespace EasyCapture
     public BitmapEncoder Encoder { get; private set; }
     private Bitmap image;
 
+    private enum ToolKind
+    {
+      Select,
+      Paint,
+    }
+
+    private ToolKind tool;
+
     public PaintDialog(Bitmap image)
     {
       InitializeComponent();
@@ -46,6 +54,7 @@ namespace EasyCapture
         brush.ImageSource = bg;
         canvas.Background = brush;
       }
+
     }
 
     private void WriteImageToSTream()
@@ -68,6 +77,33 @@ namespace EasyCapture
       DialogResult = false;
       Close();
     }
+    private void EnterSelectMode()
+    {
+      tool = ToolKind.Select;
+      canvas.Cursor = Cursors.Arrow;
+      canvas.EditingMode = InkCanvasEditingMode.None;
+    }
 
+    private void EnterPaintMode()
+    {
+      canvas.Cursor = Cursors.Pen;
+      canvas.EditingMode = InkCanvasEditingMode.Ink;
+      tool = ToolKind.Paint;
+    }
+
+    private void PaintTool_Selected(object sender, RoutedEventArgs e)
+    {
+      EnterPaintMode();
+    }
+
+    private void SelectTool_Selected(object sender, RoutedEventArgs e)
+    {
+      EnterSelectMode();
+    }
+
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+      toolBox.SelectedIndex = 0;
+    }
   }
 }

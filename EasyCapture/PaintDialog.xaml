@@ -13,21 +13,40 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-
+        Loaded="Window_Loaded"
         SizeToContent="WidthAndHeight"
         Title="PintWindow">
-    <Grid>
+  <Window.Resources>
+    
+  </Window.Resources>
+  <Grid Margin="16">
     <StackPanel>
-      <StackPanel>
-        
-        <InkCanvas Name="canvas" Cursor="Pen" Margin="16, 16, 16, 16" />
-      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="0, 0, 16, 0">
+          <ListBox Name="toolBox" Style="{StaticResource MaterialDesignToolToggleListBox}">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" />
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem Selected="SelectTool_Selected">
+              <materialDesign:PackIcon Kind="Navigation"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="PaintTool_Selected">
+              <materialDesign:PackIcon Kind="Pen" />
+            </ListBoxItem>
 
-      <StackPanel Orientation="Horizontal" Margin="0,16,0,16" HorizontalAlignment="Center">
-        <Button Content="Save" Margin="0,0,8,0" Click="SaveButton_Click"/>
-        <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelButton_Click"/>
-      </StackPanel>
+          </ListBox>
 
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+          <InkCanvas Name="canvas" UseCustomCursor="True" />
+          <StackPanel Orientation="Horizontal" Margin="0,16,0,0" HorizontalAlignment="Center">
+            <Button Content="Save" Margin="0,0,8,0" Click="SaveButton_Click"/>
+            <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelButton_Click"/>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
     </StackPanel>
 
   </Grid>
