@@ -14,6 +14,7 @@
         MouseRightButtonDown="Window_MouseRightButtonDown"
         MouseMove="Window_MouseMove"
         MouseLeftButtonUp="Window_MouseLeftButtonUp"
+        Cursor="Cross"
         Topmost="True"
         Title="EasyCapture">
   <Canvas>

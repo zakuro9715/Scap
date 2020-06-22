@@ -90,7 +90,6 @@ namespace EasyCapture
       this.DataContext = new { SelectionBox = this.selectionBox };
 
       this.settings = settings;
-      Mouse.OverrideCursor = Cursors.Cross;
     }
 
     private void Window_KeyDown(object sender, KeyEventArgs e)
