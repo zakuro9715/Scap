@@ -6,7 +6,7 @@ Simple capture screen tool
 
 ## Install
 
-- Download [EasyCapture.zip](https://github.com/team-pianoforte/EasyCapture/releases/download/0.1.0/EasyCapture.zip) and unzip it
+- Download [EasyCapture.zip](https://github.com/team-pianoforte/EasyCapture/releases/latest/download/EasyCapture.zip) and unzip it
 - [Optional] Pin EasyCapture.exe to taskbar
 
 ## Usage
@@ -14,6 +14,7 @@ Simple capture screen tool
 - Run EasyCapture.exe
 - Drag the area you want to capture.
 - The captured image will be shown on explorer.
+- Configure to run EasyCapture.Settings.exe
 
 ## Note
 
