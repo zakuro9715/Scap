@@ -4,6 +4,7 @@ using System.Diagnostics.SymbolStore;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,7 +32,6 @@ namespace EasyCapture
     }
 
     private ToolKind tool;
-
     public PaintDialog(Bitmap image)
     {
       InitializeComponent();
@@ -54,7 +54,6 @@ namespace EasyCapture
         brush.ImageSource = bg;
         canvas.Background = brush;
       }
-
     }
 
     private void WriteImageToSTream()
@@ -86,9 +85,9 @@ namespace EasyCapture
 
     private void EnterPaintMode()
     {
+      tool = ToolKind.Paint;
       canvas.Cursor = Cursors.Pen;
       canvas.EditingMode = InkCanvasEditingMode.Ink;
-      tool = ToolKind.Paint;
     }
 
     private void PaintTool_Selected(object sender, RoutedEventArgs e)
@@ -105,5 +104,39 @@ namespace EasyCapture
     {
       toolBox.SelectedIndex = 0;
     }
+
+    private void SetColor(System.Windows.Media.Color color)
+    {
+      canvas.DefaultDrawingAttributes.Color = color;
+    }
+
+    private static System.Windows.Media.Color GetColorByOffset(GradientStopCollection collection, double offset)
+    {
+      GradientStop[] stops = collection.OrderBy(x => x.Offset).ToArray();
+      if (offset <= 0) return stops[0].Color;
+      if (offset >= 1) return stops[stops.Length - 1].Color;
+      GradientStop left = stops[0], right = null;
+      foreach (GradientStop stop in stops)
+      {
+        if (stop.Offset >= offset)
+        {
+          right = stop;
+          break;
+        }
+        left = stop;
+      }
+      offset = Math.Round((offset - left.Offset) / (right.Offset - left.Offset), 2);
+      byte a = (byte)((right.Color.A - left.Color.A) * offset + left.Color.A);
+      byte r = (byte)((right.Color.R - left.Color.R) * offset + left.Color.R);
+      byte g = (byte)((right.Color.G - left.Color.G) * offset + left.Color.G);
+      byte b = (byte)((right.Color.B - left.Color.B) * offset + left.Color.B);
+      return System.Windows.Media.Color.FromArgb(a, r, g, b);
+    }
+
+    private void ColorSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+      var slider = (sender as Slider);
+      var brush = (slider.Background as LinearGradientBrush);
+      SetColor(GetColorByOffset(brush.GradientStops, slider.Value));    }
   }
 }

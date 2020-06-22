@@ -35,19 +35,39 @@
             <ListBoxItem Selected="PaintTool_Selected">
               <materialDesign:PackIcon Kind="Pen" />
             </ListBoxItem>
-
           </ListBox>
 
+          <ListBox Name="colorBox" Margin="0, 16, 0, 0" Style="{StaticResource MaterialDesignToolToggleListBox}">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" Width="50"/>
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+          </ListBox>
         </StackPanel>
         <StackPanel Orientation="Vertical">
           <InkCanvas Name="canvas" UseCustomCursor="True" />
-          <StackPanel Orientation="Horizontal" Margin="0,16,0,0" HorizontalAlignment="Center">
-            <Button Content="Save" Margin="0,0,8,0" Click="SaveButton_Click"/>
-            <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelButton_Click"/>
-          </StackPanel>
+          <Slider Name="colorSlider" Minimum="0.0" Maximum="1.0" SmallChange="0.01" LargeChange="0.1"  ValueChanged="ColorSlider_ValueChanged">
+            <Slider.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFF0000" Offset="0"/>
+                <GradientStop Color="#FFFFFF00" Offset="0.167"/>
+                <GradientStop Color="#FF00FF00" Offset="0.333"/>
+                <GradientStop Color="#FF00FFFF" Offset="0.5"/>
+                <GradientStop Color="#FF0000FF" Offset="0.667"/>
+                <GradientStop Color="#FFFF00FF" Offset="0.833"/>
+                <GradientStop Color="#FFFF0000" Offset="1"/>
+              </LinearGradientBrush>
+            </Slider.Background>
+          </Slider>
+
         </StackPanel>
       </StackPanel>
-    </StackPanel>
 
+      <StackPanel Orientation="Horizontal" Margin="0,32,0,0" HorizontalAlignment="Center">
+        <Button Content="Save" Margin="0,0,8,0" Click="SaveButton_Click"/>
+        <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelButton_Click"/>
+      </StackPanel>
+    </StackPanel>
   </Grid>
 </Window>
