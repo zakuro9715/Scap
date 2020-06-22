@@ -42,6 +42,7 @@ namespace EasyCapture
       if (captureWindow.DialogResult == false)
       {
         Close();
+        return;
       }
 
       var image = captureWindow.Image;
