@@ -4,35 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyCapture.Settings"
+        xmlns:properties="clr-namespace:EasyCapture.Settings.Properties" 
         mc:Ignorable="d"
         FontFamily="メイリオ"
-        Title="MainWindow" Height="300" Width="600">
-  <Grid Margin="8, 8, 0, 0">
-    <TextBlock Text="EasyCapture Settings" FontSize="20" TextDecorations="Underline" />
-    <Grid Margin="16,64,0,0">
+        Title="{x:Static properties:Resources.Title}"
+        SizeToContent="WidthAndHeight"
+        >
+  <Grid Margin="24, 8, 24, 16">
+    <TextBlock Text="{x:Static properties:Resources.Title}" FontSize="20" TextDecorations="Underline" Margin="0,0 0,0" />
+    <Grid Margin="0,64,0,0">
       <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-          <Label Content="save path: " FontSize="16" />
+          <Label Content="{x:Static properties:Resources.SaveFolder}" Padding="-10, 0, 0, 0" Margin="0, 0, 10, 0"/>
           <StackPanel Orientation="Horizontal">
             <TextBox Text="{Binding Settings.ScreenshotDir}" Width="400" Height="20"/>
             <Button Content="..." FontSize="10" Width="30" Height="20" VerticalContentAlignment="Center" Click="SelectFolderButton_Click"/>
           </StackPanel>
         </StackPanel>
         <StackPanel Margin="0,16,0,0">
-          <CheckBox Content="Open Explorer after capture" IsChecked="{Binding Settings.OpenExplorer, Mode=TwoWay}"/>
+          <CheckBox Content="{x:Static properties:Resources.OpenExplorer}" IsChecked="{Binding Settings.OpenExplorer, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Margin="0,16,0,0" Orientation="Vertical">
-          <CheckBox Content="Upload to Imgur" IsChecked="{Binding Settings.UploadToImgur, Mode=TwoWay}"/>
+          <CheckBox Content="{x:Static properties:Resources.UploadToImgur}" IsChecked="{Binding Settings.UploadToImgur, Mode=TwoWay}"/>
           <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0" Height="20">
-            <Button Content="Login" Click="ImgurLogin_Click" Padding="8, 0, 8, 0" />
-            <Button Content="Logout" Click="ImgurLogout_Click" Padding="8, 0, 8, 0" Margin="8, 0, 0, 0" />
-            <Label Content="Account:" Margin="8, -4, -8, 0"/>
+            <Button Content="{x:Static properties:Resources.Login}" Click="ImgurLogin_Click" Padding="8, 0, 8, 0" />
+            <Button Content="{x:Static properties:Resources.Logout}" Click="ImgurLogout_Click" Padding="8, 0, 8, 0" Margin="8, 0, 0, 0" />
+            <Label Content="{x:Static properties:Resources.Account}" Margin="8, -4, -8, 0"/>
             <Label Content="{Binding Settings.ImgurUsername}" VerticalAlignment="Top" Margin="0, -4, 0, 0"/>
           </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,16,0,0" HorizontalAlignment="Center">
-          <Button Content="Save" Margin="0,0,8,0" Padding="8, 2, 8, 2" Click="SaveButton_Click"/>
-          <Button Content="Cancel" Padding="8, 2, 8, 2" Click="CancelButton_Click"/>
+          <Button Content="{x:Static properties:Resources.Save}" Margin="0,0,8,0" Padding="8, 2, 8, 2" Click="SaveButton_Click"/>
+          <Button Content="{x:Static properties:Resources.Cancel}" Padding="8, 2, 8, 2" Click="CancelButton_Click"/>
         </StackPanel>
       </StackPanel>
     </Grid>

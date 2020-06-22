@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Account</value>
+    <value>アカウント</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>キャンセル</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>ログイン</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
+    <value>ログアウト</value>
   </data>
   <data name="OpenExplorer" xml:space="preserve">
-    <value>Open Explorer after capture</value>
+    <value>キャプチャ後にエクスプローラを起動</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>保存</value>
   </data>
   <data name="SaveFolder" xml:space="preserve">
-    <value>Save Folder</value>
+    <value>保存先フォルダ</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>EasyCapture Settings</value>
+    <value>EasyCapture 設定</value>
   </data>
   <data name="UploadToImgur" xml:space="preserve">
-    <value>Upload to Imgur</value>
+    <value>Imgur にアップロード</value>
   </data>
 </root>
