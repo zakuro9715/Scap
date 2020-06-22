@@ -25,8 +25,6 @@ namespace EasyCapture
   public partial class MainWindow : Window
   {
     private Settings settings;
-    private CaptureDialog captureDialog;
-    private PaintDialog paintDialog;
     public MainWindow()
     {
       InitializeComponent();
@@ -38,82 +36,50 @@ namespace EasyCapture
       image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
     }
 
-    private void ShowCaptureDialog() {
-      captureDialog = new CaptureDialog(settings);
-      captureDialog.ShowDialog();
-    }
-
-    private void ShowPaintDialog()
-    {
-      var image = captureDialog.Image;
-      paintDialog = new PaintDialog(image);
-      paintDialog.ShowDialog();
-    }
-
-    private async Task ProcessImage(Bitmap image)
-    {
-      try
-      {
-        SaveImage(image);
-        if (settings.UploadToImgur)
-        {
-          using (var ms = new MemoryStream())
-          {
-            image.Save(ms, ImageFormat.Png);
-            var link = await Imgur.Upload(Convert.ToBase64String(ms.ToArray()), settings);
-            Process.Start(new ProcessStartInfo("cmd", $"/c start { link.Replace("&", "^&") }"));
-          }
-        }
-
-        if (settings.OpenExplorer)
-        {
-          Process.Start("EXPLORER.EXE", settings.ScreenshotDir);
-        }
-        Close();
-      }
-      catch (Exception e)
-      {
-        Debug.Crash(Properties.Resources.FaildToSaveImage, e);
-      }
-
-    }
-
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
       settings = Settings.Load();
-      ShowCaptureDialog();
+
+      var captureDialog = new CaptureDialog(settings);
+      captureDialog.ShowDialog();
       if (captureDialog.DialogResult == false)
       {
         Close();
         return;
       }
 
-      ShowPaintDialog();
-      if (paintDialog.DialogResult == false)
-      {
-        Close();
-        return;
-      }
+      var image = captureDialog.Image;
+      var filepath = System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png";
 
-      var path = System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png";
-      using (var fs = new FileStream(path, FileMode.Create))
+      if (settings.UsePreview)
       {
+        var paintDialog = new PaintDialog(image);
+        paintDialog.ShowDialog();
+        if (paintDialog.DialogResult == false)
+        {
+          Close();
+          return;
+        }
+
+        using var fs = new FileStream(filepath, FileMode.Create);
         paintDialog.Encoder.Save(fs);
+      }
+      else
+      {
+        image.Save(filepath, ImageFormat.Png);
       }
 
       if (settings.UploadToImgur)
       {
-        using (var ms = new MemoryStream())
+        using var ms = new MemoryStream();
+        byte[] data;
+        using (var fs = File.Open(filepath, FileMode.Open))
         {
-          byte[] data;
-          using (var fs = File.Open(path, FileMode.Open))
-          {
-            data = new byte[fs.Length];
-            fs.Read(data);
-          }
-          var link = await Imgur.Upload(Convert.ToBase64String(data), settings);
-          Process.Start(new ProcessStartInfo("cmd", $"/c start { link.Replace("&", "^&") }"));
+          data = new byte[fs.Length];
+          fs.Read(data);
         }
+        var link = await Imgur.Upload(Convert.ToBase64String(data), settings);
+        Process.Start(new ProcessStartInfo("cmd", $"/c start { link.Replace("&", "^&") }"));
       }
 
       if (settings.OpenExplorer)

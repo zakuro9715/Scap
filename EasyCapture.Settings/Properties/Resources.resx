@@ -144,4 +144,7 @@
   <data name="UploadToImgur" xml:space="preserve">
     <value>Upload to Imgur</value>
   </data>
+  <data name="UsePreview" xml:space="preserve">
+    <value>Use preview and paint</value>
+  </data>
 </root>

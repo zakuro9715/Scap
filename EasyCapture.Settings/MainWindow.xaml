@@ -31,6 +31,9 @@
         <StackPanel Margin="0,16,0,0">
           <CheckBox Content="{x:Static properties:Resources.OpenExplorer}" IsChecked="{Binding Settings.OpenExplorer, Mode=TwoWay}"/>
         </StackPanel>
+        <StackPanel Margin="0,16,0,0">
+          <CheckBox Content="{x:Static properties:Resources.UsePreview}" IsChecked="{Binding Settings.UsePreview, Mode=TwoWay}"/>
+        </StackPanel>
         <StackPanel Margin="0,16,0,0" Orientation="Vertical">
           <CheckBox Content="{x:Static properties:Resources.UploadToImgur}" IsChecked="{Binding Settings.UploadToImgur, Mode=TwoWay}"/>
           <StackPanel Orientation="Horizontal" Margin="20, 8, 0, 0">

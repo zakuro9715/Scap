@@ -140,5 +140,14 @@ namespace EasyCapture.Settings.Properties {
                 return ResourceManager.GetString("UploadToImgur", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Use preview and paint に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UsePreview {
+            get {
+                return ResourceManager.GetString("UsePreview", resourceCulture);
+            }
+        }
     }
 }

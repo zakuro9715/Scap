@@ -12,11 +12,6 @@ namespace EasyCapture.Common
   public class Settings : INotifyPropertyChanged
   {
     public Settings() { }
-    public Settings(string screenshotDir, bool openExplorer)
-    {
-      this.screenshotDir = screenshotDir;
-      this.openExplorer = openExplorer;
-    }
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -49,6 +44,20 @@ namespace EasyCapture.Common
         if (openExplorer != value)
         {
           openExplorer = value;
+          NotifyPropertyChanged();
+        }
+      }
+    }
+
+    private bool usePreview;
+    public bool UsePreview
+    {
+      get { return usePreview; }
+      set
+      {
+        if (usePreview != value)
+        {
+          usePreview = value;
           NotifyPropertyChanged();
         }
       }
@@ -147,7 +156,13 @@ namespace EasyCapture.Common
     );
 
     public static Settings Default {
-      get { return new Settings(defaultScreenshotDir, true); }
+      get {
+        var settings = new Settings();
+        settings.screenshotDir = defaultScreenshotDir;
+        settings.openExplorer = true;
+        settings.usePreview = true;
+        return settings;
+      }
     }
 
 
