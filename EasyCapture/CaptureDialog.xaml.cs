@@ -15,6 +15,7 @@ using System.Drawing.Imaging;
 using EasyCapture.Common;
 using System.Threading.Tasks;
 using System.Security.Permissions;
+using System.Windows.Interop;
 
 namespace EasyCapture
 {
@@ -121,14 +122,14 @@ namespace EasyCapture
     }
 
     public Bitmap Image { get; private set; }
-    private void Capture()
+    private void Capture(int x, int y, int w, int h)
     {
-        Image = new Bitmap(selectionBox.Width, selectionBox.Height);
+        Image = new Bitmap(w, h);
         var graphics = Graphics.FromImage(Image);
         graphics.CopyFromScreen(
-          new System.Drawing.Point(selectionBox.Left, selectionBox.Top),
+          new System.Drawing.Point(x, y),
           new System.Drawing.Point(0, 0),
-          new System.Drawing.Size(selectionBox.Width, selectionBox.Height)
+          new System.Drawing.Size(w, h)
         );
         DialogResult = true;
         Close();
@@ -137,7 +138,14 @@ namespace EasyCapture
     private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
       selectionBox.Visibility = Visibility.Hidden;
-      Capture();
+      if (selectionBox.Width == 0 || selectionBox.Height == 0)
+      {
+        // Capture full screen when just click not drag and drop.
+        var bounds = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds;
+        Capture(0, 0, bounds.Width, bounds.Height);
+      } else {
+        Capture(selectionBox.Left, selectionBox.Top, selectionBox.Width, selectionBox.Height);
+      }
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)
