@@ -23,7 +23,7 @@ namespace EasyCapture
   /// <summary>
   /// Overlay.xaml の相互作用ロジック
   /// </summary>
-  public partial class CaptureWindow : Window
+  public partial class CaptureDialog : Window
   {
     private class SelectionBox : BindingData
     {
@@ -84,7 +84,7 @@ namespace EasyCapture
 
     private readonly SelectionBox selectionBox = new SelectionBox();
     private readonly Settings settings;
-    public CaptureWindow(Settings settings)
+    public CaptureDialog(Settings settings)
     {
       InitializeComponent();
       this.DataContext = new { SelectionBox = this.selectionBox };
