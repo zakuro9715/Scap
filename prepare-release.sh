@@ -1,6 +1,6 @@
-mkdir -p ./dist/EasyCapture
-cp -R EasyCapture.Settings/bin/Release/netcoreapp3.1/* ./dist/EasyCapture/
-cp -R EasyCapture/bin/Release/netcoreapp3.1/* ./dist/EasyCapture/
+mkdir -p ./dist/Scap
+cp -R Scap.Settings/bin/Release/netcoreapp3.1/* ./dist/Scap/
+cp -R Scap/bin/Release/netcoreapp3.1/* ./dist/Scap/
 
 cd dist
-zip -r EasyCapture.zip EasyCapture
+zip -r Scap.zip Scap

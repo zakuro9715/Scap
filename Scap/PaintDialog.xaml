@@ -1,0 +1,74 @@
+<Window x:Class="Scap.PaintDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Scap"
+        xmlns:properties="clr-namespace:Scap.Properties" 
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Loaded="Window_Loaded"
+        SizeToContent="WidthAndHeight"
+        Title="{x:Static properties:Resources.PaintDialogTitle}">
+
+  <Window.Resources>
+  </Window.Resources>
+  <Grid Margin="16">
+    <StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="0, 0, 16, 0">
+          <ListBox Name="toolBox" Style="{StaticResource MaterialDesignToolToggleListBox}">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" />
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem Selected="SelectTool_Selected">
+              <materialDesign:PackIcon Kind="Navigation"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="PaintTool_Selected">
+              <materialDesign:PackIcon Kind="Pen" />
+            </ListBoxItem>
+          </ListBox>
+
+          <ListBox Name="colorBox" Margin="0, 16, 0, 0" Style="{StaticResource MaterialDesignToolToggleListBox}">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" Width="50"/>
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+          </ListBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+          <InkCanvas Name="canvas" UseCustomCursor="True" />
+          <Slider Name="colorSlider" Minimum="0.0" Maximum="1.0" SmallChange="0.01" LargeChange="0.1"  ValueChanged="ColorSlider_ValueChanged">
+            <Slider.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFF0000" Offset="0"/>
+                <GradientStop Color="#FFFFFF00" Offset="0.167"/>
+                <GradientStop Color="#FF00FF00" Offset="0.333"/>
+                <GradientStop Color="#FF00FFFF" Offset="0.5"/>
+                <GradientStop Color="#FF0000FF" Offset="0.667"/>
+                <GradientStop Color="#FFFF00FF" Offset="0.833"/>
+                <GradientStop Color="#FFFF0000" Offset="1"/>
+              </LinearGradientBrush>
+            </Slider.Background>
+          </Slider>
+
+        </StackPanel>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" Margin="0,32,0,0" HorizontalAlignment="Center">
+        <Button Content="Save" Margin="0,0,8,0" Click="SaveButton_Click"/>
+        <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelButton_Click"/>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</Window>
