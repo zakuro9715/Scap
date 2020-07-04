@@ -9,7 +9,7 @@ using System.Dynamic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Scap.Common
+namespace Scap.Core
 {
   public static class Imgur
   {

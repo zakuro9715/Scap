@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scap.Common\Scap.Common.csproj" />
+    <ProjectReference Include="..\Scap.Core\Scap.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

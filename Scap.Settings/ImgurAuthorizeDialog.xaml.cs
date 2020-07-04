@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Scap.Common;
+using Scap.Core;
 
 
 namespace Scap.Settings
@@ -21,8 +21,8 @@ namespace Scap.Settings
   /// </summary>
   public partial class ImgurAuthorizeDialog : Window
   {
-    private Scap.Common.Settings settings;
-      public ImgurAuthorizeDialog(Scap.Common.Settings settings)
+    private Scap.Core.Settings settings;
+      public ImgurAuthorizeDialog(Scap.Core.Settings settings)
     {
       InitializeComponent();
       this.settings = settings;

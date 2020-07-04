@@ -1,4 +1,4 @@
-using Scap.Common;
+using Scap.Core;
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 
-namespace Scap
+namespace Scap.App
 {
   /// <summary>
   /// MainWindow.xaml の相互作用ロジック

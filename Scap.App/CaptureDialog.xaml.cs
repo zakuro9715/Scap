@@ -12,12 +12,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Drawing.Imaging;
-using Scap.Common;
+using Scap.Core;
 using System.Threading.Tasks;
 using System.Security.Permissions;
 using System.Windows.Interop;
 
-namespace Scap
+namespace Scap.App
 {
   using Point = System.Drawing.Point;
 

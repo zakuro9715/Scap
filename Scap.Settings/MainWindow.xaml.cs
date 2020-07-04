@@ -24,11 +24,11 @@ namespace Scap.Settings
   /// </summary>
   public partial class MainWindow : Window
   {
-    private Scap.Common.Settings settings = null;
+    private Scap.Core.Settings settings = null;
     public MainWindow()
     {
       InitializeComponent();
-      settings = Scap.Common.Settings.Load();
+      settings = Scap.Core.Settings.Load();
       DataContext = new { Settings = settings };
     }
     private void SaveButton_Click(object sender, RoutedEventArgs e)

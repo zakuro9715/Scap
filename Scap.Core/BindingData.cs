@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Scap
+namespace Scap.Core
 {
   public abstract class BindingData : INotifyPropertyChanged
   {

@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <Version>0.9.0</Version>
+    <AssemblyName>Scap</AssemblyName>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Authors>Pianoforte</Authors>
   </PropertyGroup>
@@ -45,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scap.Common\Scap.Common.csproj" />
+    <ProjectReference Include="..\Scap.Core\Scap.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

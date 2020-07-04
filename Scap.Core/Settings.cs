@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Scap.Common
+namespace Scap.Core
 {
   public class Settings : INotifyPropertyChanged
   {
