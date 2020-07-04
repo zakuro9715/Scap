@@ -16,18 +16,19 @@ namespace Scap.Core
     public static void OpenAuthWindow()
     {
       var url = string.Format(
-        Properties.Resources.ImgurAuthorizeUrlFormat,
-        Properties.Resources.ImgurClientId
+        Config.Imgur["authorize_url_formt"],
+        Config.Imgur["authorize_url_format"],
+        Config.Imgur["clientId"]
       ).Replace("&", "^&");
       Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
     }
 
     public static async Task Authorize(string pin, Settings settings)
     {
-      var request = new HttpRequestMessage(HttpMethod.Post, Properties.Resources.ImgurOauthTokenUrl);
+      var request = new HttpRequestMessage(HttpMethod.Post, Config.Imgur["oauth_token_url"]);
       request.Content = new FormUrlEncodedContent(new Dictionary<string, string>() {
-        { "client_id", Properties.Resources.ImgurClientId },
-        { "client_secret", Properties.Resources.ImgurClientSecret },
+        { "client_id", Config.Imgur["client_id"] },
+        { "client_secret" ,Config.Imgur["imgur.client_secret"] },
         { "pin", pin },
         { "grant_type", "pin" }
       });
@@ -50,14 +51,14 @@ namespace Scap.Core
         "Authorization",
         settings.ImgurLoggedIn
           ? $"Bearer {settings.ImgurToken}"
-          : $"Client-ID {Properties.Resources.ImgurClientId}");
+          : $"Client-ID {Config.Imgur["client_id"]}");
     }
 
 
 
     public static async Task<string> Upload(string base64Image, Settings settings)
     {
-      var request = new HttpRequestMessage(HttpMethod.Post, Properties.Resources.ImgurUploadUrl);
+      var request = new HttpRequestMessage(HttpMethod.Post, Config.Imgur["upload_url"]);
       request.Content = new FormUrlEncodedContent(new Dictionary<string, string>() {
         { "image", base64Image },
         { "type", "base64" },

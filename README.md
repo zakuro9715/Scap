@@ -21,3 +21,8 @@ Simple capture screen tool
 
 Scap.exe works only windows.
 
+# Development
+
+`cp Scap.Core/config.template.json`
+
+Type your secrets to config.json

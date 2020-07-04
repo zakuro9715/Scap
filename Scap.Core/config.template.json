@@ -1,0 +1,9 @@
+{
+  "imgur": {
+    "authorize_url_format": "https://api.imgur.com/oauth2/authorize?client_id={0}&response_type=pin",
+    "client_id": "your client id",
+    "client_secret": "your cilent secret",
+    "oauth_token_rl": "https://api.imgur.com/oauth2/token",
+    "upload_url": "https://api.imgur.com/3/upload"
+  },
+}

@@ -1,0 +1,9 @@
+{
+  "imgur": {
+    "authorize_url_format": "https://api.imgur.com/oauth2/authorize?client_id={0}&response_type=pin",
+    "client_id": "4405dc9e52d7b14",
+    "client_secret": "563deb62a0f3c35f0359aee2bb4777ba267d1d53",
+    "oauth_token_rl": "https://api.imgur.com/oauth2/token",
+    "upload_url": "https://api.imgur.com/3/upload"
+  },
+}
