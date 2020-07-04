@@ -1,7 +1,7 @@
 # [Scap](https://scap.pianoforte.dev)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5ee57a2-d919-42bc-bf84-09ff182f862b/deploy-status)](https://app.netlify.com/sites/thirsty-boyd-8cf3a4/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b5ee57a2-d919-42bc-bf84-09ff182f862b/deploy-status)](https://app.netlify.com/sites/scap/deploys)
 
 Simple capture screen tool
 
@@ -15,7 +15,7 @@ Simple capture screen tool
 - Run Scap.exe
 - Drag the area you want to capture.
 - The captured image will be shown on explorer.
-- Configure to run Scap.Settings.exe
+- Configure to run ScapSettings.exe
 
 ## Note
 
