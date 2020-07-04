@@ -16,6 +16,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using Image = System.Drawing.Image;
 
 namespace Scap.App
 {
@@ -28,6 +29,18 @@ namespace Scap.App
     public MainWindow()
     {
       InitializeComponent();
+    }
+
+    private Bitmap Capture(System.Drawing.Rectangle box)
+    {
+      var image = new Bitmap(box.Width, box.Height);
+      var graphics = Graphics.FromImage(image);
+      graphics.CopyFromScreen(
+        new System.Drawing.Point(box.X, box.Y),
+        new System.Drawing.Point(0, 0),
+        new System.Drawing.Size(box.Width, box.Height)
+      );
+      return image;
     }
 
     private void SaveImage(Bitmap image)
@@ -48,7 +61,7 @@ namespace Scap.App
         return;
       }
 
-      var image = captureDialog.Image;
+      var image = Capture(captureDialog.Rectangle); 
       var filepath = System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png";
 
       if (settings.UsePreview)
