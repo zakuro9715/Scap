@@ -76,7 +76,7 @@ namespace Scap.Core
         }
       }
     }
-    private string imgurToken;
+    private string imgurToken = "";
     public string ImgurToken
     {
       get { return imgurToken; }

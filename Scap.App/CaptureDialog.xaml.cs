@@ -115,31 +115,23 @@ namespace Scap.App
       selectionBox.Visibility = Visibility.Visible;
     }
 
-    public Bitmap Image { get; private set; }
-    private void Capture(int x, int y, int w, int h)
-    {
-        Image = new Bitmap(w, h);
-        var graphics = Graphics.FromImage(Image);
-        graphics.CopyFromScreen(
-          new System.Drawing.Point(x, y),
-          new System.Drawing.Point(0, 0),
-          new System.Drawing.Size(w, h)
-        );
-        DialogResult = true;
-        Close();
-    }
+    public System.Drawing.Rectangle Rectangle { get; set; }
 
     private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
+      this.Visibility = Visibility.Hidden;
+      selectingRectangle.Fill= new SolidColorBrush(System.Windows.Media.Color.FromArgb(0, 0, 0, 0));
       selectionBox.Visibility = Visibility.Hidden;
       if (selectionBox.Width == 0 || selectionBox.Height == 0)
       {
         // Capture full screen when just click not drag and drop.
         var bounds = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds;
-        Capture(0, 0, bounds.Width, bounds.Height);
+        Rectangle = new System.Drawing.Rectangle(0, 0, bounds.Width, bounds.Height);
       } else {
-        Capture(selectionBox.Left, selectionBox.Top, selectionBox.Width, selectionBox.Height);
+        Rectangle = new System.Drawing.Rectangle(selectionBox.Left, selectionBox.Top, selectionBox.Width, selectionBox.Height);
       }
+
+      DialogResult = true;
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)

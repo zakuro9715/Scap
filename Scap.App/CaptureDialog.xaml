@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Scap.App"
+        xmlns:local="clr-namespace:Scap"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowState="Maximized"
@@ -19,11 +19,13 @@
         Title="Scap">
   <Canvas>
     <Rectangle
+      Name="selectingRectangle"
       Canvas.Top="{Binding SelectionBox.Top}"
       Canvas.Left="{Binding SelectionBox.Left}"
       Width ="{Binding SelectionBox.Width}"
       Height ="{Binding SelectionBox.Height}"
       Fill="#33000000"
+      Stroke="#88000000"
       Visibility="{Binding SelectionBox.Visibility}"
     />
   </Canvas>
