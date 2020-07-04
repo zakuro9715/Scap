@@ -115,12 +115,6 @@ namespace Scap.App
       selectionBox.Visibility = Visibility.Visible;
     }
 
-    private void SaveImage(Bitmap image, Settings settings)
-    {
-      Directory.CreateDirectory(settings.ScreenshotDir);
-      image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
-    }
-
     public Bitmap Image { get; private set; }
     private void Capture(int x, int y, int w, int h)
     {
