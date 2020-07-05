@@ -61,7 +61,11 @@ namespace Scap.App
         return;
       }
 
-      var image = Capture(captureDialog.Rectangle); 
+      var image = Capture(captureDialog.Rectangle);
+      if (!Directory.Exists(settings.ScreenshotDir))
+      {
+        Directory.CreateDirectory(settings.ScreenshotDir);
+      }
       var filepath = System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png";
 
       if (settings.UsePreview)
