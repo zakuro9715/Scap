@@ -111,7 +111,7 @@ namespace Scap.App
     private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
       var pos = e.GetPosition(this);
-      selectionBox.corner = new Point((int)pos.X, (int)pos.Y);
+      selectionBox.corner = new Point((int)pos.X - 7, (int)pos.Y - 7);
       selectionBox.Visibility = Visibility.Visible;
     }
 

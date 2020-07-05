@@ -39,6 +39,7 @@ namespace Scap.App
       this.image = image;
       canvas.Height = image.Height;
       canvas.Width = image.Width;
+      
       using (var ms = new MemoryStream())
       {
         image.Save(ms, ImageFormat.Bmp);

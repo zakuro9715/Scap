@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:Scap"
         mc:Ignorable="d"
         WindowStyle="None"
-        WindowState="Maximized"
+        WindowState="Normal"
         AllowsTransparency="True"
         Background="Transparent"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="0" Width="0">
+        Title="MainWindow"
+        Left="0"
+        Top="0"
+        >
     <Grid>
         
     </Grid>
