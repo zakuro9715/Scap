@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icon.ico</ApplicationIcon>
-    <Version>0.9.1</Version>
+    <Version>0.9.2</Version>
     <AssemblyName>ScapSettings</AssemblyName>
     <Company>Pianoforte</Company>
     <Product>Scap</Product>
