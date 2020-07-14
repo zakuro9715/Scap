@@ -40,6 +40,7 @@ namespace Scap.App
         new System.Drawing.Point(0, 0),
         new System.Drawing.Size(box.Width, box.Height)
       );
+      SetImageToClipboard(image);
       return image;
     }
 
@@ -47,6 +48,26 @@ namespace Scap.App
     {
       Directory.CreateDirectory(settings.ScreenshotDir);
       image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
+    }
+
+    private void SetImageToClipboard(Bitmap image)
+    {
+      using var ms = new MemoryStream();
+      image.Save(ms, ImageFormat.Bmp);
+      SetImageToClipboard(ms);
+    }
+
+    private void SetImageToClipboard(MemoryStream ms)
+    {
+      ms.Seek(0, System.IO.SeekOrigin.Begin);
+      var source =
+          BitmapFrame.Create(
+              ms,
+              BitmapCreateOptions.None,
+              BitmapCacheOption.OnLoad
+          );
+
+      Clipboard.SetImage(source);
     }
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -78,8 +99,12 @@ namespace Scap.App
           return;
         }
 
+        using var ms = new MemoryStream();
+        paintDialog.Encoder.Save(ms);
+        SetImageToClipboard(ms);
+
         using var fs = new FileStream(filepath, FileMode.Create);
-        paintDialog.Encoder.Save(fs);
+        ms.WriteTo(fs);
       }
       else
       {
