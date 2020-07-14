@@ -44,12 +44,6 @@ namespace Scap.App
       return image;
     }
 
-    private void SaveImage(Bitmap image)
-    {
-      Directory.CreateDirectory(settings.ScreenshotDir);
-      image.Save(System.IO.Path.Combine(settings.ScreenshotDir, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")) + ".png");
-    }
-
     private void SetImageToClipboard(Bitmap image)
     {
       using var ms = new MemoryStream();
@@ -59,7 +53,7 @@ namespace Scap.App
 
     private void SetImageToClipboard(MemoryStream ms)
     {
-      ms.Seek(0, System.IO.SeekOrigin.Begin);
+      ms.Seek(0, SeekOrigin.Begin);
       var source =
           BitmapFrame.Create(
               ms,
@@ -69,6 +63,8 @@ namespace Scap.App
 
       Clipboard.SetImage(source);
     }
+
+
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
